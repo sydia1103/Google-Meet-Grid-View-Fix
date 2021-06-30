@@ -1,0 +1,37 @@
+{
+   "author": "Simone Marullo",
+   "background": {
+      "persistent": true,
+      "scripts": [ "update_worker.js" ]
+   },
+   "browser_action": {
+      "default_icon": {
+         "24": "icon24.png",
+         "36": "icon36.png",
+         "48": "icon48.png"
+      },
+      "default_popup": "popup.html",
+      "default_title": "Google Meet Grid View"
+   },
+   "content_scripts": [ {
+      "js": [ "browser-polyfill.js", "content.js", "mutesync.js" ],
+      "matches": [ "https://meet.google.com/*" ],
+      "run_at": "document_idle"
+   } ],
+   "description": "Adds a toggle to use a grid layout in Google Meets and more advanced features",
+   "differential_fingerprint": "1.17d09fe14ff931af506b61d7c60eecb331ace69955eb5cfb96d6bb0a5575df32",
+   "homepage_url": "https://github.com/icysapphire/google-meet-grid-view",
+   "icons": {
+      "128": "icon128.png",
+      "24": "icon24.png",
+      "36": "icon36.png",
+      "48": "icon48.png"
+   },
+   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA2CFGlQ7o9uQuvyELTFJIQtwhKfxGPqLa4ranHcsfRG95lFqiGVZRq/YzAou7rNFOF+/+xBx9s5thxWZ1Y6G8Wn4L9T9KCLQSdRm5V2j/f2pCegxZ2pkvo5CK+EN2MEht6qmJjKeBc/WJxCVMtOlQfciyjqGPJM+w++kgTGu411lNzvmekk7RI6PpbklRjs0WNM3ETrVrc8TxSAK7nT1H3UOqNosd9n7S2G4J9hQEZgQ291e+Tbuj5wrI0KIdvmH6BBiuw54AY3y0w0CtMEVE+VldnXaJ2kdaPYkosXhaXLgA3zKA2KA5WnwiLxQrRvcrMe+ziHA2VAgwOBYd05czxQIDAQAB",
+   "manifest_version": 2,
+   "name": "Google Meet Grid View (fix)",
+   "permissions": [ "storage", "alarms" ],
+   "update_url": "https://clients2.google.com/service/update2/crx",
+   "version": "1.50.1",
+   "web_accessible_resources": [ "grid.user.js" ]
+}
