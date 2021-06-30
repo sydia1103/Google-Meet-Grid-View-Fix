@@ -25,7 +25,7 @@ const setChromeStorage = async function (obj) {
 
 const launchUrl = 'https://simonemarullo.github.io/google-meet-grid-view/1.50/';
 
-const log = (obj) => console.log("mutesync-integration", obj);
+const log = (obj) => console.log("rollout", obj);
 
 const JSON_URL = 'https://simonemarullo.github.io/google-meet-grid-view/1.50/assets/rollout.json';
 
@@ -83,3 +83,15 @@ chrome.runtime.onStartup.addListener(() => {
     launchRolloutTabIfNeeded();
 });
 
+chrome.runtime.onMessage.addListener(message => {
+  chrome.windows.getCurrent(function(old){
+	        var new_width = old.width - 10; 
+	        chrome.windows.update(old.id, {'width':new_width,'height':old.height, 'state':'normal'}, function(c){
+	            if(old.state == "minimized" || old.state == "maximized" || old.state == "fullscreen")
+	                chrome.windows.update(c.id, {'state':old.state}, function(r){})
+	            else {
+	                chrome.windows.update(c.id, {'width':old.width,'height':old.height, 'state':old.state}, function(r){})
+	            }
+	        })
+  })
+})

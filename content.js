@@ -1,10 +1,11 @@
-// Pass state between browser action & injected script
-const inFlightRequests = new Map()
+const pendingRequests = new Map()
 
+// WebExtensions API
+// Add listener on browser messages (perform a postMessage from content.js towards userscript for messages received by extension.js popup)
 browser.runtime.onMessage.addListener(message => {
   const id = +new Date()
   const p = new Promise(resolve => {
-    inFlightRequests.set(id, resolve)
+    pendingRequests.set(id, resolve)
   })
   window.postMessage({
     id,
@@ -14,17 +15,25 @@ browser.runtime.onMessage.addListener(message => {
   return p
 })
 
+// Web API
+// Add listener on messages from userscript
 window.addEventListener('message', event => {
-  if (event.source !== window) return // Only accept messages from ourselves
-  if (event.data.sender !== 'gmgv_user') return
-  const sendResponse = inFlightRequests.get(event.data.id)
-  inFlightRequests.delete(event.data.id)
+  if (event.source !== window) return // Only accept messages from current window
+  if (event.data.sender !== 'gmgv_user') return // Only accept messages from userscript
+  if ('type' in event.data &&  event.data.type == 'reflow') {
+          browser.runtime.sendMessage("reflow")
+	  return
+  }
+  
+  const sendResponse = pendingRequests.get(event.data.id)
+  pendingRequests.delete(event.data.id)
   delete event.data.id
   delete event.data.sender
   if (sendResponse) sendResponse(event.data)
 })
 
-// Add our user script
+
+// Inject userscript
 var scripts = ['grid.user.js']
 scripts.forEach(function(script) {
   var s = document.createElement('script')

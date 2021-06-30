@@ -18,9 +18,8 @@
       "matches": [ "https://meet.google.com/*" ],
       "run_at": "document_idle"
    } ],
-   "description": "Adds a toggle to use a grid layout in Google Meets and more advanced features",
-   "differential_fingerprint": "1.17d09fe14ff931af506b61d7c60eecb331ace69955eb5cfb96d6bb0a5575df32",
-   "homepage_url": "https://github.com/icysapphire/google-meet-grid-view",
+   "description": "Adds a toggle to use a grid layout in Google Meets and some tweaks",
+   "differential_fingerprint": "1.4c7007fc664a86a760bc14b23d0539b2bb65ace79608e1a1a2e30f09c64a3ea4",
    "icons": {
       "128": "icon128.png",
       "24": "icon24.png",
@@ -32,6 +31,6 @@
    "name": "Google Meet Grid View (fix)",
    "permissions": [ "storage", "alarms" ],
    "update_url": "https://clients2.google.com/service/update2/crx",
-   "version": "1.50.1",
+   "version": "1.52.1",
    "web_accessible_resources": [ "grid.user.js" ]
 }

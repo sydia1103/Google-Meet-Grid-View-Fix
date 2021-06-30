@@ -34,21 +34,12 @@ body.no-meeting #no-meeting {
 }
 body.in-meeting #enabled,
 body.in-meeting #show-only-video,
-body.in-meeting #highlight-speaker,
+body.in-meeting #advanced-hide-controls,
 body.in-meeting #include-own-video,
 body.in-meeting #auto-enable,
-body.in-meeting #screen-capture-mode,
-body.in-meeting #screen-capture-mode-desc,
 body.in-meeting #advanced-settings {
   display: flex;
   align-items: center;
-}
-#screen-capture-mode {
-  padding-bottom: 0;
-}
-#screen-capture-mode-desc {
-  padding-top: 3px;
-  padding-left: 45px;
 }
 body #source-code {
   display: block;

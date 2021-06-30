@@ -29,7 +29,7 @@ function toggleMuteStatus() {
     }
 }
 
-// If our desktop app is running then the code below will connect to it.
+// If mutesync desktop app is running then the code below will connect to it.
 // Default behavior is auto-retry if not able to (re)connect via polling with exponential back off.
 var socket = io("http://localhost:8249");
 
